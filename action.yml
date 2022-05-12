@@ -1,0 +1,11 @@
+name: 'Github update changelog action'
+description: 'Update the changelog'
+author: 'Technology Expertise Team - @rubber-duckies'
+runs:
+  using: "composite"
+  steps:
+    - shell: bash
+      run: |
+        echo 'TEST ON COMPOSITE'
+        pwd && ls -ltr
+  
