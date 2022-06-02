@@ -1,0 +1,27 @@
+name: 'Github update changelog action'
+description: 'Update the changelog'
+author: 'Technology Expertise Team - @rubber-duckies'
+inputs:
+  working-directory: # Temporary
+    required: true
+    description: 'Project path'
+  release-version:
+    required: true
+    description: 'Version bump'
+  github-head-ref: # Issues https://github.com/actions/runner/issues/933
+    required: false
+    description: 'Branch reference'
+  github-token: # Issues https://github.com/actions/runner/issues/933
+    description: 'A Github PAT'
+    required: false
+
+runs:
+  using: "composite"
+  steps:
+    - name: Version bump in the changelog file - "${{ inputs.release-version }}"
+      working-directory: ${{ inputs.working-directory }} # Temporary
+      shell: bash
+      run: |
+        echo "Version bump is ${{ inputs.release-version }}"
+        ${{ github.action_path }}/changelog.sh ${{ inputs.release-version }}
+        cat CHANGELOG.md
