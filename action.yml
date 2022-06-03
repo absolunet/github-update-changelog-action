@@ -13,8 +13,5 @@ runs:
       shell: bash
       run: |
         echo "Version bump is ${{ inputs.release-version }}"
-        pwd
-        echo ${{ github.action_path }}
-        ls -ltr
-#        ${{ github.action_path }}/changelog.sh ${{ inputs.release-version }}
-#        cat CHANGELOG.md
+        ${{ github.action_path }}/changelog.sh ${{ inputs.release-version }}
+        cat CHANGELOG.md
